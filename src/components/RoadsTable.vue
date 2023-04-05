@@ -21,14 +21,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="road, i in filteredRoads" :key="i">
+          <tr class="details" v-for="road, i in filteredRoads" :key="i" @click="displayDetails(road.map)">
             <td>{{ road.route }}</td>
             <td>{{ road.segment }}</td>
             <td>{{ road.start_point }}</td>
             <td>{{ road.end_point.slice(0, 30) }}</td>
             <td>{{ road.distance }}</td>
             <td>{{ road.travel_time }}</td>
-            <td>{{ road.avg_speed }}</td>
+            <td :style="{color: '#' + road.status}" style="font-weight: bold">{{ road.avg_speed }}</td>
           </tr>
         </tbody>
       </table>
@@ -38,6 +38,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import store from '@/store/index'
+import * as mutationTypes from '@/store/mutationTypes'
+
 export default {
   name: 'DirectionsTable',
   props: {
@@ -45,13 +48,12 @@ export default {
   },
   data: () => ({
     search: '',
-    roadCondition: {
-      // good: ,
-      // ok: ,
-      // bad: ,
-      // very_bad: ,
-    },
   }),
+  methods: {
+    displayDetails(map) {
+      store.commit(mutationTypes.CHANGE_MAP, map)
+    }
+  },
   computed: {
     ...mapGetters({
       roads: 'getRoads',
@@ -61,11 +63,6 @@ export default {
         if (this.search != '') {
           return road.route.toLowerCase().match(this.search.toLowerCase())
         }
-        // road.status == '1' ? red
-        //   : road.status == '2' ? pink
-        //   : road.status == '2' ? pink
-        //   : road.status == '2' ? pink
-
         return this.roads
       })
     }
@@ -95,5 +92,8 @@ export default {
   }
   .very_bad {
     color: red;
+  }
+  tr.details {
+    cursor: pointer;
   }
 </style>

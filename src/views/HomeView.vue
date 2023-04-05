@@ -7,7 +7,7 @@
     </div>
     <div class="column main">
       <div class="column stats">
-        <Statistics></Statistics>
+        <!-- <Statistics></Statistics> -->
       </div>
       <div>
         <Roads v-if="is_roads"></Roads>
@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="column map">
-      <!-- <Map></Map> -->
+      <Map></Map>
     </div>
   </div>
 </template>
@@ -24,8 +24,8 @@
 import Menu from '@/components/Menu.vue'
 import Roads from '@/components/RoadsTable.vue'
 import Directions from '@/components/DirectionsTable.vue'
-import Statistics from '@/components/Statistics.vue'
-// import Map from '@/components/Map.vue'
+// import Statistics from '@/components/Statistics.vue'
+import Map from '@/components/Map.vue'
 
 import {
   fetchRoads,
@@ -37,8 +37,8 @@ import {
     Menu,
     Roads,
     Directions,
-    Statistics,
-    // Map,
+    // Statistics,
+    Map,
   },
   data: () => ({
     is_roads: true,
@@ -63,7 +63,7 @@ import {
   }
   .container {
     width: 100%;
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
     display: flex;
     flex-direction: row;
