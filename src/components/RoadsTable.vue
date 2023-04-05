@@ -2,12 +2,13 @@
   <div class="tables">
     <div class="search">
         <div>
-          <input v-model="search" placeholder="Enter route no">
-          <button type="submit">Search</button>
+          <Directions></Directions>
+          <!-- <input v-model="search" placeholder="Enter route no">
+          <button type="submit">Search</button> -->
         </div>
       </div>
     <div class="column table">
-      <h2>List of roads</h2>
+      <h2>Segments</h2>
       <table>
         <thead>
           <tr>
@@ -40,9 +41,13 @@
 import { mapGetters } from 'vuex'
 import store from '@/store/index'
 import * as mutationTypes from '@/store/mutationTypes'
+import Directions from '@/components/DirectionsTable.vue'
 
 export default {
-  name: 'DirectionsTable',
+  name: 'RoadsTable',
+  components: {
+    Directions,
+  },
   props: {
     // msg: String
   },
