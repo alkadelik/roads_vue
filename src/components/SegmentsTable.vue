@@ -2,7 +2,7 @@
   <div class="tables">
     <div class="search">
         <div>
-          <Directions></Directions>
+          <!-- <Segments></Segments> -->
           <!-- <input v-model="search" placeholder="Enter route no">
           <button type="submit">Search</button> -->
         </div>
@@ -22,14 +22,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="details" v-for="road, i in filteredRoads" :key="i" @click="displayDetails(road.map, road.segment)">
-            <td>{{ road.route }}</td>
-            <td>{{ road.segment }}</td>
-            <td>{{ road.start_point }}</td>
-            <td>{{ road.end_point.slice(0, 30) }}</td>
-            <td>{{ road.distance }}</td>
-            <td>{{ road.travel_time }}</td>
-            <td :style="{color: '#' + road.status}" style="font-weight: bold">{{ road.avg_speed }}</td>
+          <tr class="details" v-for="segment, i in filteredSegments" :key="i" @click="displayDetails(segment.map, segment.segment)">
+            <td>{{ segment.route }}</td>
+            <td>{{ segment.segment }}</td>
+            <td>{{ segment.start_point }}</td>
+            <td>{{ segment.end_point.slice(0, 30) }}</td>
+            <td>{{ segment.distance }}</td>
+            <td>{{ segment.travel_time }}</td>
+            <td :style="{color: '#' + segment.status}" style="font-weight: bold">{{ segment.avg_speed }}</td>
           </tr>
         </tbody>
       </table>
@@ -41,12 +41,12 @@
 import { mapGetters } from 'vuex'
 import store from '@/store/index'
 import * as mutationTypes from '@/store/mutationTypes'
-import Directions from '@/components/DirectionsTable.vue'
+// import Segments from '@/components/SegmentsTable.vue'
 
 export default {
-  name: 'RoadsTable',
+  name: 'SegmentsTable',
   components: {
-    Directions,
+    // Segments,
   },
   props: {
     // msg: String
@@ -62,14 +62,14 @@ export default {
   },
   computed: {
     ...mapGetters({
-      roads: 'getRoads',
+      segment: 'getSegments',
     }),
-    filteredRoads() {
-      return this.roads.filter((road) => {
+    filteredSegments() {
+      return this.segment.filter((segment) => {
         if (this.search != '') {
-          return road.route.toLowerCase().match(this.search.toLowerCase())
+          return segment.route.toLowerCase().match(this.search.toLowerCase())
         }
-        return this.roads
+        return this.segment
       })
     }
   }
