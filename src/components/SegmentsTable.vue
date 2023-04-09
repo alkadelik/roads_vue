@@ -13,23 +13,29 @@
         <thead>
           <tr>
             <th>Route</th>
-            <th>Segment</th>
+            <th>Code</th>
+            <th>Name</th>
+            <th>State</th>
             <th>Start point</th>
             <th>End point</th>
             <th>Distance (Km)</th>
             <th>Travel time (mins)</th>
             <th>Average speed (Km/hr)</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
           <tr class="details" v-for="segment, i in filteredSegments" :key="i" @click="displayDetails(segment.map, segment.segment)">
             <td>{{ segment.route }}</td>
-            <td>{{ segment.segment }}</td>
+            <td>{{ segment.code }}</td>
+            <td>{{ segment.name }}</td>
+            <td>{{ segment.state }}</td>
             <td>{{ segment.start_point }}</td>
             <td>{{ segment.end_point.slice(0, 30) }}</td>
             <td>{{ segment.distance }}</td>
             <td>{{ segment.travel_time }}</td>
-            <td :style="{color: '#' + segment.status}" style="font-weight: bold">{{ segment.avg_speed }}</td>
+            <td>{{ segment.avg_speed }}</td>
+            <td class="status" :style="{background: '#' + segment.status}"></td>
           </tr>
         </tbody>
       </table>

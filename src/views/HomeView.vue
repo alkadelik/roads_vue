@@ -117,6 +117,7 @@ import {
     justify-content: center;
   }
   .menu {
+    display: none;
     width: 100%;
     max-width: 150px;
     padding: 10px;
