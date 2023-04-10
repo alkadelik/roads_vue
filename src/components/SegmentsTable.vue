@@ -18,24 +18,22 @@
             <th>State</th>
             <th>Start point</th>
             <th>End point</th>
-            <th>Distance (Km)</th>
-            <th>Travel time (mins)</th>
-            <th>Average speed (Km/hr)</th>
-            <th>Status</th>
+            <th>Distance</th>
+            <th>Travel time</th>
+            <th>Average speed</th>
           </tr>
         </thead>
         <tbody>
           <tr class="details" v-for="segment, i in filteredSegments" :key="i" @click="displayDetails(segment.map, segment.segment)">
             <td>{{ segment.route }}</td>
             <td>{{ segment.code }}</td>
-            <td>{{ segment.name }}</td>
-            <td>{{ segment.state }}</td>
-            <td>{{ segment.start_point }}</td>
-            <td>{{ segment.end_point.slice(0, 30) }}</td>
-            <td>{{ segment.distance }}</td>
-            <td>{{ segment.travel_time }}</td>
-            <td>{{ segment.avg_speed }}</td>
-            <td class="status" :style="{background: '#' + segment.status}"></td>
+            <td class="capitalise">{{ segment.name.toLowerCase() }}</td>
+            <td class="capitalise">{{ segment.state.toLowerCase() }}</td>
+            <td class="capitalise">{{ segment.start_point.toLowerCase() }}</td>
+            <td class="capitalise">{{ segment.end_point.toLowerCase() }}</td>
+            <td>{{ segment.distance }} Km</td>
+            <td>{{ segment.travel_time }} mins</td>
+            <td class="status" :style="{background: '#' + segment.status}" style="font-weight: bold;">{{ segment.avg_speed }} Km/hr</td>
           </tr>
         </tbody>
       </table>
@@ -107,5 +105,8 @@ export default {
   }
   tr.details {
     cursor: pointer;
+  }
+  .capitalise {
+    text-transform: capitalize;
   }
 </style>

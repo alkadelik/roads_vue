@@ -14,7 +14,7 @@
         </select>
         <ul>
           <li v-for="segment, i in route_segments" :key="i" @click="checkString(segment.start_point, segment.end_point, i)">
-            {{ segment.segment }}
+            {{ segment.code }}
           </li>
         </ul>
         <button @click="clearSegments">Clear</button>

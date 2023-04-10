@@ -24,14 +24,10 @@
 import { mapGetters } from 'vuex'
 
 import Menu from '@/components/Menu.vue'
-import UploadFile from '@/components/UploadFromFile.vue'
+import UploadFile from '@/components/AddSegments.vue'
 import Segments from '@/components/SegmentsTable.vue'
 // import Statistics from '@/components/Statistics.vue'
 import Map from '@/components/Map.vue'
-
-import {
-  fetchRoads,
-} from '@/services/apiServices'
 
  export default {
   name: 'DirectionsView',
@@ -50,9 +46,6 @@ import {
     ...mapGetters({
       display_map: 'getMapDisplayStatus',
     })
-  },
-  created: function(){
-    fetchRoads() // put this in App.vue level
   },
   mounted() {
     // Make the DIV element draggable:
