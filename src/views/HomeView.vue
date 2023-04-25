@@ -4,7 +4,7 @@
       <Menu></Menu>
     </div>
     <div class="column main">
-      <div class="column stats">
+      <div class="column">
         <!-- <Statistics></Statistics> -->
       </div>
       <div>
